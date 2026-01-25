@@ -1,0 +1,43 @@
+name: CI - Build, Test, Scan
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build-test-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install -r app/requirements.txt
+
+      - name: Basic test
+        run: |
+          python -c "import flask; print('Flask import OK ✅')"
+
+      - name: Build Docker image
+        run: |
+          docker build -t devsecops-pipeline:latest .
+
+      - name: Install Trivy
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget
+          wget -qO- https://github.com/aquasecurity/trivy/releases/latest/download/trivy_0.50.1_Linux-64bit.tar.gz | tar zx
+          sudo mv trivy /usr/local/bin/
+
+      - name: Scan Docker image (HIGH/CRITICAL)
+        run: |
+           trivy image --severity HIGH,CRITICAL --no-progress devsecops-pipeline:latest || true
