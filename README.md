@@ -47,3 +47,15 @@ This project demonstrates a secure CI/CD pipeline using GitHub Actions, Docker, 
 ```bash
 docker build -t devsecops-pipeline .
 docker run -p 5000:5000 devsecops-pipeline
+
+## Deployment (AWS Ready)
+This project is designed to be cloud-ready and can be deployed on:
+- AWS EC2 (Docker container)
+- AWS ECS Fargate (recommended)
+- Kubernetes (EKS)
+
+### Example: Run on any Linux server (EC2)
+```bash
+docker pull <your-image>
+docker run -d -p 80:5000 <your-image>
+

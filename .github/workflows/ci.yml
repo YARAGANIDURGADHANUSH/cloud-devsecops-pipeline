@@ -31,6 +31,13 @@ jobs:
         run: |
           docker build -t devsecops-pipeline:latest .
 
+      - name: Run container + test /health endpoint
+        run: |
+          docker run -d -p 8080:5000 --name test-app devsecops-pipeline:latest
+          sleep 3
+          curl -f http://127.0.0.1:8080/health
+          docker rm -f test-app
+
       - name: Install Trivy (Stable via APT)
         run: |
           sudo apt-get update
