@@ -1,4 +1,9 @@
+![CI](https://github.com/YARAGANIDURGADHANUSH/cloud-devsecops-pipeline/actions/workflows/ci.yml/badge.svg)
+
 # Cloud-Based Secure DevOps Pipeline for Software Development
+
+## Architecture Diagram
+![DevSecOps Architecture](DevSecOps_Architecture_Diagram.png)
 
 This project demonstrates a secure CI/CD pipeline using GitHub Actions, Docker, and vulnerability scanning.
 
