@@ -31,13 +31,15 @@ jobs:
         run: |
           docker build -t devsecops-pipeline:latest .
 
-      - name: Install Trivy
+      - name: Install Trivy (Stable via APT)
         run: |
           sudo apt-get update
-          sudo apt-get install -y wget
-          wget -qO- https://github.com/aquasecurity/trivy/releases/latest/download/trivy_0.50.1_Linux-64bit.tar.gz | tar zx
-          sudo mv trivy /usr/local/bin/
+          sudo apt-get install -y gnupg lsb-release wget apt-transport-https
+          wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+          echo "deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/trivy.list
+          sudo apt-get update
+          sudo apt-get install -y trivy
 
       - name: Scan Docker image (HIGH/CRITICAL)
         run: |
-           trivy image --severity HIGH,CRITICAL --no-progress devsecops-pipeline:latest || true
+          trivy image --severity HIGH,CRITICAL --no-progress devsecops-pipeline:latest || true
