@@ -3,7 +3,7 @@
 # Cloud-Based Secure DevOps Pipeline for Software Development
 
 ## Architecture Diagram
-![DevSecOps Architecture](DevSecOps%20Architecture%20Diagram.png)
+![DevSecOps Architecture](https://raw.githubusercontent.com/YARAGANIDURGADHANUSH/cloud-devsecops-pipeline/main/DevSecOps_Architecture_Diagram.png)
 
 This project demonstrates a secure CI/CD pipeline using GitHub Actions, Docker, and vulnerability scanning.
 
