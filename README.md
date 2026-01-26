@@ -13,6 +13,9 @@
 - ✅ Job Summary prints vulnerability counts and fails build on CRITICAL issues
 
 ![Docker PS](screenshots/docker-ps.jpg)
+![EC2 Instance](screenshots/ec2-instance.jpg)
+![GitHub Actions](screenshots/github-actions.jpg)
+
 
 ## CI Workflow (GitHub Actions)
 On every push/PR to `main`, the pipeline:
