@@ -12,9 +12,9 @@
 - ✅ Trivy JSON report generated and uploaded as an artifact
 - ✅ Job Summary prints vulnerability counts and fails build on CRITICAL issues
 
-![Docker PS](screenshots/docker-ps.jpg)
-![EC2 Instance](screenshots/ec2-instance.jpg)
-![GitHub Actions](screenshots/github-actions.jpg)
+![Docker PS](screenshots/docker-ps.png)
+![EC2 Instance](screenshots/ec2-instance.png)
+![GitHub Actions](screenshots/github-actions.png)
 
 
 ## CI Workflow (GitHub Actions)
