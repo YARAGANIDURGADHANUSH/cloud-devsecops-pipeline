@@ -12,6 +12,8 @@
 - ✅ Trivy JSON report generated and uploaded as an artifact
 - ✅ Job Summary prints vulnerability counts and fails build on CRITICAL issues
 
+![Docker PS](screenshots/docker-ps.jpg)
+
 ## CI Workflow (GitHub Actions)
 On every push/PR to `main`, the pipeline:
 1. Installs dependencies
