@@ -2,6 +2,13 @@
 
 # Cloud-Based Secure DevOps Pipeline for Software Development
 
+## Live Demo (AWS EC2)
+✅ http://13.233.252.127/  
+✅ Health Check: http://13.233.252.127/health  
+
+## Docker Hub Image
+✅ https://hub.docker.com/r/ydurgadhanush/devsecops-pipeline
+
 ## Architecture Diagram
 ![DevSecOps Architecture](https://raw.githubusercontent.com/YARAGANIDURGADHANUSH/cloud-devsecops-pipeline/main/DevSecOps_Architecture_Diagram.png)
 
@@ -12,32 +19,27 @@
 - ✅ Trivy JSON report generated and uploaded as an artifact
 - ✅ Job Summary prints vulnerability counts and fails build on CRITICAL issues
 
-![Docker PS](screenshots/docker-ps.png)
-![EC2 Instance](screenshots/ec2-instance.png)
-![GitHub Actions](screenshots/github-actions.png)
-![Docker Hub Repo](screenshots/dockerhub-repo.png)
-![EC2 Running](screenshots/ec2-running.png)
-![EC2 Public Output](screenshots/ec2-public-output.png)
-
+## Screenshots
+![Docker PS](screenshots/docker-ps.png)  
+![EC2 Instance](screenshots/ec2-instance.png)  
+![GitHub Actions](screenshots/github-actions.png)  
+![Docker Hub Repo](screenshots/dockerhub-repo.png)  
+![EC2 Running](screenshots/ec2-running.png)  
+![EC2 Public Output](screenshots/ec2-public-output.png)  
 
 ## CI Workflow (GitHub Actions)
 On every push/PR to `main`, the pipeline:
 1. Installs dependencies
 2. Runs a basic Flask import test
 3. Builds the Docker image
-4. Scans the image using Trivy
-5. Uploads Trivy JSON report as an artifact
-6. Shows HIGH/CRITICAL summary and fails if CRITICAL > 0
-
-
+4. Runs container and tests `/health` endpoint
+5. Scans the image using Trivy (HIGH/CRITICAL)
+6. Uploads Trivy report as an artifact
 
 ## Resume Bullet Points
-- Built a cloud-ready DevSecOps CI pipeline using GitHub Actions to automate testing, Docker builds, and vulnerability scanning.
-- Integrated Trivy scanning with JSON artifact reports and automated security gate to fail builds on CRITICAL vulnerabilities.
-- Documented architecture and workflow to support reproducible deployments and audit-ready security validation.
-
-
-This project demonstrates a secure CI/CD pipeline using GitHub Actions, Docker, and vulnerability scanning.
+- Deployed a Dockerized Flask application on AWS EC2 and exposed it via a public HTTP endpoint.
+- Built a CI pipeline using GitHub Actions to automate Docker builds, health checks, and Trivy vulnerability scanning.
+- Published Docker images to Docker Hub for versioned container delivery and simplified cloud deployments.
 
 ## Tech Stack
 - Python (Flask)
@@ -45,27 +47,18 @@ This project demonstrates a secure CI/CD pipeline using GitHub Actions, Docker, 
 - Git & GitHub
 - GitHub Actions (CI)
 - Trivy (Image vulnerability scanning)
+- AWS EC2 (Deployment)
 
 ## Pipeline Flow
 1. Code push / PR triggers GitHub Actions
 2. Dependencies are installed
 3. Basic test runs
 4. Docker image is built
-5. Trivy scan checks HIGH/CRITICAL vulnerabilities
+5. Container health check is tested
+6. Trivy scan checks HIGH/CRITICAL vulnerabilities
+7. Report is uploaded as an artifact
 
 ## Run Locally
 ```bash
 docker build -t devsecops-pipeline .
 docker run -p 5000:5000 devsecops-pipeline
-
-## Deployment (AWS Ready)
-This project is designed to be cloud-ready and can be deployed on:
-- AWS EC2 (Docker container)
-- AWS ECS Fargate (recommended)
-- Kubernetes (EKS)
-
-### Example: Run on any Linux server (EC2)
-```bash
-docker pull <your-image>
-docker run -d -p 80:5000 <your-image>
-
