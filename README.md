@@ -15,6 +15,9 @@
 ![Docker PS](screenshots/docker-ps.png)
 ![EC2 Instance](screenshots/ec2-instance.png)
 ![GitHub Actions](screenshots/github-actions.png)
+![Docker Hub Repo](screenshots/dockerhub-repo.png)
+![EC2 Running](screenshots/ec2-running.png)
+![EC2 Public Output](screenshots/ec2-public-output.png)
 
 
 ## CI Workflow (GitHub Actions)
@@ -25,6 +28,8 @@ On every push/PR to `main`, the pipeline:
 4. Scans the image using Trivy
 5. Uploads Trivy JSON report as an artifact
 6. Shows HIGH/CRITICAL summary and fails if CRITICAL > 0
+
+
 
 ## Resume Bullet Points
 - Built a cloud-ready DevSecOps CI pipeline using GitHub Actions to automate testing, Docker builds, and vulnerability scanning.
