@@ -23,22 +23,20 @@ jobs:
         run: |
           pip install -r app/requirements.txt
 
-      - name: Basic test
-        run: |
-          python -c "import flask; print('Flask import OK ✅')"
-
       - name: Build Docker image
         run: |
           docker build -t devsecops-pipeline:latest .
 
-      - name: Run container + test /health endpoint
+      - name: Run container
         run: |
-          docker run -d -p 8080:5000 --name test-app devsecops-pipeline:latest
-          sleep 3
-          curl -f http://127.0.0.1:8080/health
-          docker rm -f test-app
+          docker run -d -p 5000:5000 --name devsecops-ci devsecops-pipeline
+          sleep 5
 
-      - name: Install Trivy (Stable via APT)
+      - name: Health check
+        run: |
+          curl -f http://localhost:5000/health
+
+      - name: Install Trivy
         run: |
           sudo apt-get update
           sudo apt-get install -y gnupg lsb-release wget apt-transport-https
@@ -47,12 +45,13 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y trivy
 
-      - name: Trivy Scan (Generate Report)
+      - name: Trivy Scan (HIGH / CRITICAL)
         run: |
           mkdir -p reports
-          trivy image --severity HIGH,CRITICAL --no-progress devsecops-pipeline:latest > reports/trivy-report.txt || true
+          trivy image --severity HIGH,CRITICAL --no-progress \
+          --format table devsecops-pipeline:latest > reports/trivy-report.txt || true
 
-      - name: Upload Trivy Report Artifact
+      - name: Upload Trivy Report
         uses: actions/upload-artifact@v4
         with:
           name: trivy-security-report
