@@ -3,8 +3,19 @@
 # Cloud-Based Secure DevOps Pipeline for Software Development
 
 ## Live Demo (AWS EC2)
-✅ http://13.233.252.127/  
-✅ Health Check: http://13.233.252.127/health  
+
+⚠️ **Note:**  
+The AWS EC2 instance used for this demo may not be running continuously to avoid cloud costs.
+
+- 🌐 Application URL (when instance is running):  
+  http://13.233.252.127/
+
+- ❤️ Health Check Endpoint (when instance is running):  
+  http://13.233.252.127/health
+
+📸 Screenshots and CI/CD logs are provided below as **proof of successful deployment and execution**.
+> This project demonstrates a complete DevSecOps workflow.  
+> Infrastructure is provisioned temporarily for demonstration purposes.
 
 ## Docker Hub Image
 ✅ https://hub.docker.com/r/ydurgadhanush/devsecops-pipeline
