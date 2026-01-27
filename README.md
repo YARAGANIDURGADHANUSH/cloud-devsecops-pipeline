@@ -20,12 +20,24 @@
 - ✅ Job Summary prints vulnerability counts and fails build on CRITICAL issues
 
 ## Screenshots
-![Docker PS](screenshots/docker-ps.png)  
-![EC2 Instance](screenshots/ec2-instance.png)  
-![GitHub Actions](screenshots/github-actions.png)  
-![Docker Hub Repo](screenshots/dockerhub-repo.png)  
-![EC2 Running](screenshots/ec2-running.png)  
-![EC2 Public Output](screenshots/ec2-public-output.png)  
+
+### Application & Health Check
+![App Health Endpoint](screenshots/app-health-endpoint.png)
+
+### Docker
+![Docker PS](screenshots/docker-ps.png)
+
+### Docker Hub
+![Docker Hub Repo](screenshots/dockerhub-repo.png)
+![Docker Hub Repository Details](screenshots/dockerhub-repository.png)
+
+### AWS EC2
+![EC2 Instance](screenshots/ec2-instance.png)
+![EC2 Public Output](screenshots/ec2-public-output.png)
+
+### GitHub Actions (CI/CD)
+![GitHub Actions Workflow](screenshots/github-actions.png)
+![GitHub Actions Success](screenshots/github-actions-success.png)
 
 ## CI Workflow (GitHub Actions)
 On every push/PR to `main`, the pipeline:
